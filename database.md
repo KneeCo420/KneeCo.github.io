@@ -1,3 +1,4 @@
+```mermaid
 erDiagram
     BOOKS ||--|| INVENTORY : PK_to_FK
     BOOKS {

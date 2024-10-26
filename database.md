@@ -32,7 +32,7 @@ erDiagram
         int stock_new
     }
     USER_ACCOUNTS ||--|{ ORDERS : PK_to_FK
-    ORDERS {
+    USER_ACCOUNTS {
         int user_ID PK 
         varchar Username
         varchar Password

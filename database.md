@@ -49,17 +49,12 @@ erDiagram
         int stock_used
         int stock_new
     }
-    CUSTOMER_ACCOUNTS ||--|{ RECEIPT : username
+    ACCOUNTS ||--|{ RECEIPT : username
+    ACCOUNTS ||--|{ STORE_ORDERS : username
     CUSTOMER_ACCOUNTS {
         varchar username PK
         varchar password_hash
-        varchar payment_method   
+        int permissions_level  
     }
-    USER_ACCOUNTS ||--|{ STORE_ORDERS : username
-    USER_ACCOUNTS {
-        varchar username PK
-        varchar password_hash
-        int permissions_level 
-    } 
-       
+
        

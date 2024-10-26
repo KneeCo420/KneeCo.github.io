@@ -2,30 +2,47 @@
 erDiagram
     BOOKS {
         int book_id PK
+        int supplier_id FK
         int book_isbn
         int book_sku
         int stock_new
         int stock_used
         char format
-        char supplier
         int price
         int retail_value
     }
+    BOOKS ||--|{ SUPPLIER : book_id
+    SUPPLIER {
+        int book_id FK
+        varchar supplier_name
+        int contact_number
+        varchar contact_email
+    }
     BOOKS ||--|{ BOOK_TITLES : book_id
     BOOK_TITLES {
-        varchar title PPK, FK
-        int book_id PPK, FK
+        varchar title PK
+        int book_id PK, FK
+    }
+    BOOKS ||--|{ BOOK_GENRE : book_id
+    BOOK_TITLES {
+        char genre PK
+        int book_id PK, FK
+    }
+    BOOKS ||--|{ BOOK_AUTHOR : book_id
+    BOOK_TITLES {
+        char author PK
+        int book_id PK, FK
     }
     BOOKS ||--|{ ORDER_ITEMS : book_id
     ORDER_ITEMS {
-        int order_id FK
-        int book_id FK
+        int order_id PK, FK
+        int book_id PK, FK
         int quantity
     }
     BOOKS ||--|{ RECEIPT_ITEMS : book_id
     RECEIPT_ITEMS {
-        int order_id FK
-        int book_id FK
+        int order_id PK, FK
+        int book_id PK, FK
         int quantity
         int promotions_discount
         int quality_discount

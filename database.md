@@ -30,14 +30,14 @@ erDiagram
         datetime ship_date
         char status
     }
-    ORDER_ITEMS }|--|| BOOKS : book_id
-    PURCHASED_ITEMS {
+    BOOKS ||--|{ ORDER_ITEMS : book_id
+    ORDER_ITEMS {
         int order_id FK
         int book_id FK
         int quantity
     }
-    RECEIPT_ITEMS }|--|| BOOKS : book_id
-    PURCHASED_ITEMS {
+    BOOKS ||--|{ RECEIPT_ITEMS : book_id
+    RECEIPT_ITEMS {
         int order_id FK
         int book_id FK
         int quantity

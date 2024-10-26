@@ -14,7 +14,7 @@ erDiagram
     BOOKS ||--|{ BOOK_TITLES : book_id
     BOOK_TITLES {
         varchar title PPK
-        book_id FK
+         int book_id FK,PPK
     }
     BOOKS ||--|{ ORDER_ITEMS : book_id
     ORDER_ITEMS {

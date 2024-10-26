@@ -13,6 +13,20 @@ erDiagram
         int price
         int retail_value
     }
+    BOOKS ||--|{ ORDER_ITEMS : book_id
+    ORDER_ITEMS {
+        int order_id FK
+        int book_id FK
+        int quantity
+    }
+    BOOKS ||--|{ RECEIPT_ITEMS : book_id
+    RECEIPT_ITEMS {
+        int order_id FK
+        int book_id FK
+        int quantity
+        int promotions_discount
+        int quality_discount
+    }
     RECEIPT ||--|{ RECEIPT_ITEMS : receipt_id
     RECEIPT {
         int receipt_id PK
@@ -29,20 +43,6 @@ erDiagram
         datetime time_of_transaction
         datetime ship_date
         char status
-    }
-    BOOKS ||--|{ ORDER_ITEMS : book_id
-    ORDER_ITEMS {
-        int order_id FK
-        int book_id FK
-        int quantity
-    }
-    BOOKS ||--|{ RECEIPT_ITEMS : book_id
-    RECEIPT_ITEMS {
-        int order_id FK
-        int book_id FK
-        int quantity
-        int promotions_discount
-        int quality_discount
     }
     INVENTORY {
         int book_id FK

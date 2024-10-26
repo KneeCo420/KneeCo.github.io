@@ -1,17 +1,20 @@
 ```mermaid
 erDiagram
-    BOOKS ||--|| INVENTORY : book_id
     BOOKS {
         int book_id PK
         int book_isbn
         int book_sku
-        char title
-        char genre
-        char author
+        int stock_new
+        int stock_used
         char format
         char supplier
         int price
         int retail_value
+    }
+    BOOKS ||--|{ BOOK_TITLES : book_id
+    BOOK_TITLES {
+        varchar title PPK
+        book_id FK PPK
     }
     BOOKS ||--|{ ORDER_ITEMS : book_id
     ORDER_ITEMS {
@@ -43,11 +46,6 @@ erDiagram
         datetime time_of_transaction
         datetime ship_date
         char status
-    }
-    INVENTORY {
-        int book_id FK
-        int stock_used
-        int stock_new
     }
     ACCOUNTS ||--o{ RECEIPT : username
     ACCOUNTS ||--o{ STORE_ORDERS : username

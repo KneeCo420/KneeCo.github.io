@@ -51,7 +51,7 @@ erDiagram
     }
     ACCOUNTS ||--|{ RECEIPT : username
     ACCOUNTS ||--|{ STORE_ORDERS : username
-    CUSTOMER_ACCOUNTS {
+    ACCOUNTS {
         varchar username PK
         varchar password_hash
         int permissions_level  

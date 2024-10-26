@@ -1,6 +1,6 @@
 ```mermaid
 erDiagram
-    BOOKS ||--|| INVENTORY : PK_to_FK
+    BOOKS ||--|| INVENTORY : 
     BOOKS {
         int isbn PK
         int SKU FK
@@ -12,7 +12,7 @@ erDiagram
         bool Availability
         int price
     }
-    ORDERS ||--|{ ORDER_ITEMS : PK_to_FK
+    ORDERS ||--|{ ORDER_ITEMS : 
     ORDERS {
         int Order_ID PK
         int user_ID FK 
@@ -20,7 +20,7 @@ erDiagram
         int subtotal
         int total
     }
-    ORDER_ITEMS ||--|{ BOOKS : PK_to_FK
+    ORDER_ITEMS ||--|{ BOOKS : 
     ORDER_ITEMS {
         int Order_ID FK
         int SKU PK
@@ -31,14 +31,14 @@ erDiagram
         int stock_used
         int stock_new
     }
-    USER_ACCOUNTS ||--|{ ORDERS : PK_to_FK
+    USER_ACCOUNTS ||--|{ ORDERS : 
     USER_ACCOUNTS {
         int user_ID PK 
         varchar Username
         varchar Password
         char Permissions
     } 
-    ORDERS ||--|| RECEIPTS : PK_to_FK
+    ORDERS ||--|| RECEIPTS : 
     RECEIPTS {
         int Order_ID FK
         datetime time_of_transaction

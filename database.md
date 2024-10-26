@@ -49,8 +49,8 @@ erDiagram
         int stock_used
         int stock_new
     }
-    ACCOUNTS ||--|{ RECEIPT : username
-    ACCOUNTS ||--|{ STORE_ORDERS : username
+    ACCOUNTS ||--o{ RECEIPT : username
+    ACCOUNTS ||--o{ STORE_ORDERS : username
     ACCOUNTS {
         varchar username PK
         varchar password_hash

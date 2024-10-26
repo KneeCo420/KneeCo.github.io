@@ -24,12 +24,12 @@ erDiagram
         int book_id PK, FK
     }
     BOOKS ||--|{ BOOK_GENRE : book_id
-    BOOK_TITLES {
+    BOOK_GENRE{
         char genre PK
         int book_id PK, FK
     }
     BOOKS ||--|{ BOOK_AUTHOR : book_id
-    BOOK_TITLES {
+    BOOK_AUTHOR {
         char author PK
         int book_id PK, FK
     }

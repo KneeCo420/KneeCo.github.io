@@ -1,47 +1,65 @@
 ```mermaid
 erDiagram
-    BOOKS ||--|| INVENTORY : 
+    BOOKS ||--|| INVENTORY : book_id
     BOOKS {
-        int isbn PK
-        int SKU FK
+        int book_id PK
+        int book_isbn
+        int book_sku
         char title
         char genre
-        char Author
-        char Format
-        char Supplier
-        bool Availability
+        char author
+        char format
+        char supplier
         int price
+        int retail_value
     }
-    ORDERS ||--|{ ORDER_ITEMS : 
-    ORDERS {
-        int Order_ID PK
-        int user_ID FK 
-        char status
-        int subtotal
+    RECEIPT ||--|{ PUCHASED_ITEMS : receipt_id
+    RECEIPT {
+        int receipt_id PK
+        int username FK 
+        int retail_tax
         int total
+        datetime time_of_transaction
     }
-    ORDER_ITEMS ||--|{ BOOKS : 
-    ORDER_ITEMS {
-        int Order_ID FK
-        int SKU PK
+    STORE_ORDERS ||--|{ ORDER_ITEMS : order_id
+    STORE_ORDERS {
+        int order_id PK
+        int username FK 
+        int total
+        datetime time_of_transaction
+        datetime ship_date
+        char status
+    }
+    ORDER_ITEMS }|--|| BOOKS : book_id
+    PURCHASED_ITEMS {
+        int order_id FK
+        int book_id FK
         int quantity
     }
+    RECEIPT_ITEMS }|--|| BOOKS : book_id
+    PURCHASED_ITEMS {
+        int order_id FK
+        int book_id FK
+        int quantity
+        int promotions_discount
+        int quality_discount
+    }
     INVENTORY {
-        int ISBN FK
+        int book_id FK
         int stock_used
         int stock_new
     }
-    USER_ACCOUNTS ||--|{ ORDERS : 
-    USER_ACCOUNTS {
-        int user_ID PK 
-        varchar Username
-        varchar Password
-        char Permissions
-    } 
-    ORDERS ||--|| RECEIPTS : 
-    RECEIPTS {
-        int Order_ID FK
-        datetime time_of_transaction
-        varchar payment_method
-        float taxes_payed
+    CUSTOMER_ACCOUNTS ||--|{ RECEIPT : username
+    CUSTOMER_ACCOUNTS {
+        varchar username PK
+        varchar password_hash
+        varchar payment_method   
     }
+    USER_ACCOUNTS ||--|{ STORE_ORDERS : username
+    USER_ACCOUNTS {
+        varchar username PK
+        varchar password_hash
+        int permissions_level 
+    } 
+       
+       

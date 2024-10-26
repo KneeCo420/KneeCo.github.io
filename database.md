@@ -13,7 +13,7 @@ erDiagram
         int price
         int retail_value
     }
-    RECEIPT ||--|{ PUCHASED_ITEMS : receipt_id
+    RECEIPT ||--|{ RECEIPT_ITEMS : receipt_id
     RECEIPT {
         int receipt_id PK
         int username FK 
